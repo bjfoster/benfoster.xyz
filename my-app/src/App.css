@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #10366f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,8 +24,16 @@
   color: white;
 }
 
+.Link-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
 .App-link {
-  color: #61dafb;
+  color: #ffffff;
+  margin: 10px;
 }
 
 @keyframes App-logo-spin {
