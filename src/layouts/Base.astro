@@ -8,10 +8,10 @@ interface Props {
 
 const {
   title,
-  description = "Ben Foster — software engineer at the Cabinet Office.",
+  description = "Ben Foster, software engineer in the UK Civil Service.",
 } = Astro.props;
 
-const pageTitle = title ? `${title} — Ben Foster` : "Ben Foster";
+const pageTitle = title ? `${title} :: Ben Foster` : "Ben Foster";
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const links = [

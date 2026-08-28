@@ -1,82 +1,76 @@
 :root {
   color-scheme: light dark;
-  --bg: #fbfaf7;
-  --fg: #24211d;
-  --muted: #6b6660;
-  --rule: #e2ded6;
-  --link: #2f5d78;
+  --bg: #fff;
+  --fg: #1a1a1a;
+  --muted: #767676;
+  --rule: #e5e5e5;
 
-  --serif:
-    "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #16181a;
-    --fg: #e4e1db;
-    --muted: #948f88;
-    --rule: #2d3033;
-    --link: #90b7d2;
+    --bg: #131313;
+    --fg: #e8e8e8;
+    --muted: #8c8c8c;
+    --rule: #2a2a2a;
   }
 }
 
 body {
-  max-width: 34rem;
-  margin: 5rem auto 4rem;
-  padding: 0 1.5rem;
+  margin: 4rem 0 6rem 4rem;
+  padding-right: 2rem;
+  max-width: 36rem;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 40rem) {
+  body {
+    margin: 2.5rem 0 4rem 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 p {
-  margin: 0 0 1.1rem;
+  margin: 0 0 1rem;
 }
 
 a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--muted);
 }
 
 a:hover {
-  color: var(--fg);
+  text-decoration-color: var(--fg);
 }
 
 h1 {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.5rem;
 }
 
-/* Section labels on the homepage — small, uppercase, sans. */
-main > h2 {
-  font-family: var(--sans);
-  font-size: 0.75rem;
+h2 {
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--muted);
   margin: 2.5rem 0 0.75rem;
 }
 
 nav {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
   margin: 0 0 3rem;
+  font-size: 0.9375rem;
 }
 
 nav a {
   margin-right: 1.25rem;
-  text-decoration: none;
   color: var(--muted);
+  text-decoration: none;
 }
 
 nav a:hover,
@@ -92,78 +86,72 @@ ul {
 
 li {
   margin-bottom: 0.4rem;
-  padding-left: 1rem;
-  text-indent: -1rem;
 }
 
-li::before {
-  content: "— ";
-  color: var(--muted);
-}
-
-footer {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin-top: 4rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-}
-
-footer a {
-  color: inherit;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: var(--fg);
-}
-
-/* Dates sit to the right of a list item, greyed back. */
 li time {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-left: 0.5rem;
   white-space: nowrap;
 }
 
-/* Post body: markdown headings stay serif, unlike the homepage section labels. */
-article h2,
-article h3 {
-  font-family: var(--serif);
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  margin: 2.25rem 0 0.6rem;
+footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
-article h2 {
-  font-size: 1.2rem;
+footer a {
+  text-decoration: none;
 }
+
+/* Icons inherit text colour and scale with the font. */
+[data-icon] {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  color: var(--muted);
+  flex: none;
+}
+
+.links li {
+  margin-bottom: 0.5rem;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.links a:hover [data-icon] {
+  color: var(--fg);
+}
+
+/* Post bodies get ordinary markdown formatting back. */
+article h2,
 article h3 {
-  font-size: 1.05rem;
+  font-size: 1rem;
+  margin: 2rem 0 0.5rem;
 }
 
 article ul,
 article ol {
-  margin: 0 0 1.1rem;
-  padding-left: 1.2rem;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
   list-style: revert;
 }
 
-article li {
-  padding-left: 0;
-  text-indent: 0;
-}
-
-article li::before {
-  content: none;
-}
-
 article blockquote {
-  margin: 1.4rem 0;
+  margin: 1.25rem 0;
   padding-left: 1rem;
   border-left: 2px solid var(--rule);
   color: var(--muted);
@@ -175,47 +163,42 @@ article img {
 }
 
 code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-  font-size: 0.85em;
+  font-family: var(--mono);
+  font-size: 0.875em;
 }
 
 :not(pre) > code {
-  background: color-mix(in srgb, var(--muted) 14%, transparent);
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
+  background: color-mix(in srgb, var(--muted) 15%, transparent);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
 }
 
 pre {
-  margin: 0 0 1.2rem;
-  padding: 0.9rem 1rem;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
   overflow-x: auto;
   border: 1px solid var(--rule);
-  border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
 .meta {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-size: 0.875rem;
   color: var(--muted);
-  margin: -0.6rem 0 1.6rem;
-}
-
-.meta time {
-  margin: 0;
+  margin: -1rem 0 1.5rem;
 }
 
 .back,
 .feed {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
   margin-top: 2.5rem;
+  font-size: 0.9375rem;
 }
 
 .back a,
 .feed a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--muted);
   text-decoration: none;
 }
@@ -223,43 +206,4 @@ pre {
 .back a:hover,
 .feed a:hover {
   color: var(--fg);
-}
-
-/* Icon links: SVG inherits the text colour and scales with the font. */
-[data-icon] {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-}
-
-.links li {
-  padding-left: 0;
-  text-indent: 0;
-  margin-bottom: 0.5rem;
-}
-
-.links li::before {
-  content: none;
-}
-
-.links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
-}
-
-.links a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
-.links [data-icon] {
-  font-size: 1.05em;
-  color: var(--muted);
-  flex: none;
-}
-
-.links a:hover [data-icon] {
-  color: inherit;
 }

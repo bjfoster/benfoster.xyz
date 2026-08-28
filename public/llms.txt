@@ -1,6 +1,6 @@
 # Ben Foster
 
-> Personal homepage of Ben Foster, a software engineer at the Cabinet Office and
+> Personal homepage of Ben Foster, a software engineer in the UK Civil Service and
 > previously a data scientist at the BBC. A small static site: a landing page
 > with projects and links, and a short about page.
 

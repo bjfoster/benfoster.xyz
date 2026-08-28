@@ -26,9 +26,9 @@ const elsewhere = [
   },
 ];
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const projects = (
+  await getCollection("projects", ({ data }) => !data.draft)
+).sort((a, b) => a.data.order - b.data.order);
 
 const posts = (await getCollection("posts", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -44,8 +44,8 @@ const dateFormat = new Intl.DateTimeFormat("en-GB", {
 <Base>
   <h1>Ben Foster</h1>
   <p>
-    Software engineer at the Cabinet Office. Previously a data scientist at the
-    BBC.
+    Software engineer in the UK Civil Service. Previously a data scientist at
+    the BBC.
   </p>
 
   {
@@ -56,7 +56,7 @@ const dateFormat = new Intl.DateTimeFormat("en-GB", {
           {projects.map(({ data }) => (
             <li>
               {data.url ? <a href={data.url}>{data.title}</a> : data.title}
-              {" — "}
+              {" :: "}
               {data.summary}
             </li>
           ))}

@@ -25,7 +25,7 @@ A new post shows up on `/blog`, in the three most recent on the homepage, and in
 
 ## Checks
 
-`pnpm verify` runs the lot — formatting, types, build. The pre-commit hook runs
+`pnpm verify` runs the lot: formatting, types, build. The pre-commit hook runs
 the same three, and so does CI before deploying.
 
 TypeScript is pinned to 6.x because `astro check` can't use the 7.x native
