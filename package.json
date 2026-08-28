@@ -1,0 +1,30 @@
+{
+  "name": "benfoster-xyz",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "pnpm format:check && pnpm check && pnpm build",
+    "hooks": "git config core.hooksPath .githooks"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@iconify-json/material-symbols": "^1.2.90",
+    "@iconify-json/simple-icons": "^1.2.93",
+    "astro": "^7.2.8",
+    "astro-icon": "^1.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3"
+  }
+}

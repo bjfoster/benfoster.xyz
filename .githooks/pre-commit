@@ -1,0 +1,19 @@
+#!/bin/sh
+# Pre-commit checks. Enable with: pnpm hooks
+#
+# Runs against the working tree, not the index — if you stage a subset of your
+# changes, what's checked is what's on disk. Fine for a one-person site; the
+# CI build on push is the real gate.
+
+set -e
+
+echo "→ prettier"
+pnpm format:check
+
+echo "→ astro check"
+pnpm check
+
+echo "→ build"
+pnpm build
+
+echo "✓ checks passed"

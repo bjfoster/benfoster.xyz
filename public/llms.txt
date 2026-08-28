@@ -1,0 +1,16 @@
+# Ben Foster
+
+> Personal homepage of Ben Foster, a software engineer at the Cabinet Office and
+> previously a data scientist at the BBC. A small static site: a landing page
+> with projects and links, and a short about page.
+
+## Pages
+
+- [Home](https://www.benfoster.xyz/): Intro, projects, and where to find me elsewhere.
+- [About](https://www.benfoster.xyz/about.html): Short bio and contact details.
+
+## Contact
+
+- Email: ben@benfoster.xyz
+- GitHub: https://github.com/bjfoster
+- LinkedIn: https://www.linkedin.com/in/benjaminfoster1/

@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Ben Foster — software engineer at the Cabinet Office.",
+} = Astro.props;
+
+const pageTitle = title ? `${title} — Ben Foster` : "Ben Foster";
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Ben Foster"
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <nav>
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            aria-current={
+              href === "/"
+                ? path === "/"
+                  ? "page"
+                  : undefined
+                : path.startsWith(href)
+                  ? "page"
+                  : undefined
+            }
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <a href="/">benfoster.xyz</a>
+    </footer>
+  </body>
+</html>

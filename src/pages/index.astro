@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Base from "../layouts/Base.astro";
+
+const elsewhere = [
+  {
+    href: "mailto:ben@benfoster.xyz",
+    icon: "material-symbols:mail-outline",
+    label: "ben@benfoster.xyz",
+  },
+  {
+    href: "https://github.com/bjfoster",
+    icon: "simple-icons:github",
+    label: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/benjaminfoster1/",
+    icon: "simple-icons:linkedin",
+    label: "LinkedIn",
+  },
+  {
+    href: "/rss.xml",
+    icon: "material-symbols:rss-feed",
+    label: "RSS",
+  },
+];
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const dateFormat = new Intl.DateTimeFormat("en-GB", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<Base>
+  <h1>Ben Foster</h1>
+  <p>
+    Software engineer at the Cabinet Office. Previously a data scientist at the
+    BBC.
+  </p>
+
+  {
+    projects.length > 0 && (
+      <>
+        <h2>Projects</h2>
+        <ul>
+          {projects.map(({ data }) => (
+            <li>
+              {data.url ? <a href={data.url}>{data.title}</a> : data.title}
+              {" — "}
+              {data.summary}
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    posts.length > 0 && (
+      <>
+        <h2>Writing</h2>
+        <ul>
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              <time datetime={post.data.date.toISOString()}>
+                {dateFormat.format(post.data.date)}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  <h2>Elsewhere</h2>
+  <ul class="links">
+    {
+      elsewhere.map(({ href, icon, label }) => (
+        <li>
+          <a href={href}>
+            <Icon name={icon} aria-hidden="true" />
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

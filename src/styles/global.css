@@ -1,0 +1,265 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fbfaf7;
+  --fg: #24211d;
+  --muted: #6b6660;
+  --rule: #e2ded6;
+  --link: #2f5d78;
+
+  --serif:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --fg: #e4e1db;
+    --muted: #948f88;
+    --rule: #2d3033;
+    --link: #90b7d2;
+  }
+}
+
+body {
+  max-width: 34rem;
+  margin: 5rem auto 4rem;
+  padding: 0 1.5rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  margin: 0 0 1.1rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--fg);
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.2rem;
+}
+
+/* Section labels on the homepage — small, uppercase, sans. */
+main > h2 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2.5rem 0 0.75rem;
+}
+
+nav {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 3rem;
+}
+
+nav a {
+  margin-right: 1.25rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  color: var(--fg);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 0.4rem;
+  padding-left: 1rem;
+  text-indent: -1rem;
+}
+
+li::before {
+  content: "— ";
+  color: var(--muted);
+}
+
+footer {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--fg);
+}
+
+/* Dates sit to the right of a list item, greyed back. */
+li time {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+/* Post body: markdown headings stay serif, unlike the homepage section labels. */
+article h2,
+article h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin: 2.25rem 0 0.6rem;
+}
+
+article h2 {
+  font-size: 1.2rem;
+}
+article h3 {
+  font-size: 1.05rem;
+}
+
+article ul,
+article ol {
+  margin: 0 0 1.1rem;
+  padding-left: 1.2rem;
+  list-style: revert;
+}
+
+article li {
+  padding-left: 0;
+  text-indent: 0;
+}
+
+article li::before {
+  content: none;
+}
+
+article blockquote {
+  margin: 1.4rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 0.85em;
+}
+
+:not(pre) > code {
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  margin: 0 0 1.2rem;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.meta {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: -0.6rem 0 1.6rem;
+}
+
+.meta time {
+  margin: 0;
+}
+
+.back,
+.feed {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  margin-top: 2.5rem;
+}
+
+.back a,
+.feed a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back a:hover,
+.feed a:hover {
+  color: var(--fg);
+}
+
+/* Icon links: SVG inherits the text colour and scales with the font. */
+[data-icon] {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.links li {
+  padding-left: 0;
+  text-indent: 0;
+  margin-bottom: 0.5rem;
+}
+
+.links li::before {
+  content: none;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.links [data-icon] {
+  font-size: 1.05em;
+  color: var(--muted);
+  flex: none;
+}
+
+.links a:hover [data-icon] {
+  color: inherit;
+}
